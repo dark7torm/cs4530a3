@@ -1,4 +1,4 @@
-name: Hello World
+name: CI
 
 on:
   push:
@@ -15,15 +15,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: go to correct repo
-        run: cd ..
       - name: install necessary dependencies
+        working-directory: ./cs4530a3
         run: npm install
       - name: build files
+        working-directory: ./cs4530a3
         run: npm run build
   run_tests:
     runs-on: ubuntu-latest
 
     steps:
       - name : run tests
+        working-directory: ./cs4530a3
         run: npm run test
