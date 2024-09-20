@@ -10,21 +10,16 @@ on:
   workflow_dispatch:
 
 jobs:
-  install_dependencies:
+  test:
 
     runs-on: ubuntu-latest
 
     steps:
-      - name: install necessary dependencies
-        working-directory: ./cs4530a3
+      - uses: actions/checkout@v3
+      - name: install dependencies
         run: npm install
-      - name: build files
-        working-directory: ./cs4530a3
+      - name: build project files
         run: npm run build
-  run_tests:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name : run tests
-        working-directory: ./cs4530a3
+      - name: test project files
         run: npm run test
+  
