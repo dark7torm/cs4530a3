@@ -1,0 +1,27 @@
+name: Hello World
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      -main
+  workflow_dispatch:
+
+jobs:
+  install_dependencies:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: install necessary dependencies
+        run: npm install
+      - name: build files
+        run: npm run build
+  run_tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name : run tests
+        run: npm run test
